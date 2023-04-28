@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "960736249221",
+    "project_id": "worldofq-ed0f4",
+    "storage_bucket": "worldofq-ed0f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960736249221:android:33d62c6e4b21c7ba8af0ec",
+        "android_client_info": {
+          "package_name": "com.krrishshx.worldofq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960736249221-ec869ttn8f9b620f6v72bnnr8gm1ebnj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEav1SZEnvcR-uAwZEDWTWHT_IChkht4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "960736249221-ec869ttn8f9b620f6v72bnnr8gm1ebnj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

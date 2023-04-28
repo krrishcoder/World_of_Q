@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-worldofq-staging-11033-authRole",
+      "UnauthRoleArn": "arn:aws:iam::839482574923:role/amplify-worldofq-staging-11033-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::839482574923:role/amplify-worldofq-staging-11033-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-worldofq-staging-11033-deployment",
+      "UnauthRoleName": "amplify-worldofq-staging-11033-unauthRole",
+      "StackName": "amplify-worldofq-staging-11033",
+      "StackId": "arn:aws:cloudformation:ap-south-1:839482574923:stack/amplify-worldofq-staging-11033/a5bc40a0-e173-11ed-944a-0a1bf952336a",
+      "AmplifyAppId": "d2ak4lvx8pdnme"
+    },
+    "categories": {
+      "function": {
+        "sayhii": {}
+      }
+    }
+  }
+}

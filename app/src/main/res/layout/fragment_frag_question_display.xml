@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#03A9F4"
+    tools:context=".frags.Frag_question_display">
+
+
+    <TextView
+        android:id="@+id/tv_minute_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="30"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/viewpager_question_display"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_medium"
+        android:text="m : "
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_minute_left"
+        app:layout_constraintStart_toEndOf="@+id/tv_minute_left"
+        app:layout_constraintTop_toTopOf="@+id/tv_minute_left" />
+
+    <TextView
+        android:id="@+id/tv_seconds_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="00"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_minute_left"
+        app:layout_constraintStart_toEndOf="@+id/textView21"
+        app:layout_constraintTop_toTopOf="@+id/tv_minute_left" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="s"
+        android:textSize="10sp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/textView21"
+        app:layout_constraintStart_toEndOf="@+id/tv_seconds_left"
+        app:layout_constraintTop_toTopOf="@+id/textView21" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager_question_display"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="266dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

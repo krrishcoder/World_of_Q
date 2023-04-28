@@ -1,0 +1,6 @@
+{
+  "AppSyncApiName": "worldofq",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2023-04-23T04:39:39.977Z"
+}

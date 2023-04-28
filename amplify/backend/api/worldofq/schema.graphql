@@ -1,0 +1,62 @@
+type Answer @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Topic: Topic @hasOne
+  answer_list: [Int]
+}
+
+type Streak @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  streak_count: Int
+  User: User @hasOne
+}
+
+type Result @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  time_finished: String
+  date: String
+  attended_question: Int
+  total_marks: Int
+  Topic: Topic @hasOne
+  User: User @hasOne
+  attempt_no: Int
+  Subject: Subject @hasOne
+}
+
+type Question @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  q_des: String!
+  Topic: Topic @hasOne
+  option1: String
+  option2: String
+  option3: String
+  option4: String
+}
+
+type Topic @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  topic_name: String
+  timer: Int
+  Subject: Subject @hasOne
+}
+
+type Subject @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  sub_name: String
+  sem_no: Int
+  Degree: Degree @hasOne
+}
+
+type Degree @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  dname: String!
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  username: String!
+  rollno: String!
+  Degree: Degree @hasOne
+  sem_no: Int
+  gmail_id: String
+}
+ 

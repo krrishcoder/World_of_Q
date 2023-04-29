@@ -42,7 +42,7 @@
         android:id="@+id/main_view_register"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="#635985"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,11 +73,11 @@
                 android:inputType="number"
                 android:letterSpacing="0.02"
                 android:maxLength="8"
-                android:padding="5dp"
+                android:padding="12dp"
                 android:paddingStart="12dp"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:textSize="22dp" />
+                android:textSize="15dp" />
 
 
         </com.google.android.material.card.MaterialCardView>
@@ -106,10 +106,10 @@
                 android:inputType="number"
                 android:letterSpacing="0.02"
                 android:maxLength="1"
-                android:padding="5dp"
+                android:padding="12dp"
                 android:paddingStart="12dp"
                 android:singleLine="true"
-                android:textSize="22dp" />
+                android:textSize="15dp" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -136,11 +136,11 @@
                 android:hint="Gmail or any id "
                 android:letterSpacing="0.02"
                 android:maxLength="30"
-                android:padding="5dp"
+                android:padding="12dp"
                 android:paddingStart="12dp"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:textSize="22dp" />
+                android:textSize="15dp" />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
@@ -183,11 +183,11 @@
                     android:inputType="textPassword"
                     android:letterSpacing="0.02"
                     android:maxLength="20"
-                    android:padding="5dp"
+                    android:padding="12dp"
                     android:paddingStart="12dp"
                     android:singleLine="true"
                     android:textColor="@color/black"
-                    android:textSize="22dp"
+                    android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/btn_show_password"
                     app:layout_constraintStart_toStartOf="parent"
@@ -199,6 +199,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            app:cardBackgroundColor="#D3FFFFFF"
             android:id="@+id/materialCardView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -215,16 +216,16 @@
                 android:id="@+id/et_login_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="#D3FFFFFF"
                 android:fontFamily="@font/poppins_medium"
                 android:hint="Enter Name"
                 android:letterSpacing="0.02"
                 android:maxLength="20"
-                android:padding="5dp"
+                android:padding="12dp"
                 android:paddingStart="12dp"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:textSize="22dp" />
+                android:textSize="15dp" />
 
 
         </com.google.android.material.card.MaterialCardView>

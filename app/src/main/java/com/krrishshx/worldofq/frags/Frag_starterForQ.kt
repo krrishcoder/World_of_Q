@@ -99,7 +99,10 @@ class Frag_starterForQ : Fragment() ,rv_test_topics_list.MytestTopicsOnItemClick
 
             binding.cardOne.tvSubjectHeading.text = vm.subject_chosen
             binding.cardOne.tvTotalTest.text = "${it.size?.toString()}"
+
             rv_adapter_topics_list.setData(it)
+            binding.fragStarterOfShimmer.visibility = View.INVISIBLE
+            binding.starterViewParentAfterShimmer.visibility = View.VISIBLE
 
 
 
@@ -119,9 +122,17 @@ class Frag_starterForQ : Fragment() ,rv_test_topics_list.MytestTopicsOnItemClick
 
             }
 
+            if(oldScrollY - scrollY >=0 && scrollY >=20){
+                Log.d("debug:"," test3 scrolling up")
+              binding.rvTestListForASubject.isNestedScrollingEnabled = false
+            }else{
+                binding.rvTestListForASubject.isNestedScrollingEnabled = true
+            }
+
             binding.rvPreviousResult.isNestedScrollingEnabled = scrollY >= 1540
 
         }
+
 
 
 

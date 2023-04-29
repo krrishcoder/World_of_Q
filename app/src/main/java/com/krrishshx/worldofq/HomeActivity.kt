@@ -1,14 +1,21 @@
 package com.krrishshx.worldofq
 
-import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Configuration
+import android.media.Image
 import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings.Global.putString
 import android.util.Log
-import android.view.*
+import android.view.MenuItem
+import android.view.OrientationEventListener
+import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
@@ -16,30 +23,39 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.work.impl.model.Preference
+import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener
 import com.krrishshx.worldofq.databinding.ActivityHomeBinding
-import com.krrishshx.worldofq.databinding.NavHeaderBinding
 import com.krrishshx.worldofq.frags.Frag_Profile
 import com.krrishshx.worldofq.frags.Frag_question_display
 import com.krrishshx.worldofq.frags.Frag_starterForQ
 import com.krrishshx.worldofq.view_models.Home_vm
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
+import okhttp3.internal.cache2.Relay.Companion.edit
+import java.util.prefs.Preferences
 
 
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity(),Frag_Profile.OnButtonClickListener  , OnNavigationItemSelectedListener , Frag_starterForQ.OnButtonStartTestClickListener{
 
     lateinit var binding:ActivityHomeBinding
-    lateinit var binding_nav : NavHeaderBinding
     lateinit var   mOrientationListener : OrientationEventListener
+    lateinit var   sharedPref :SharedPreferences
     var flag_orien_changed =0
     private val vm:Home_vm by viewModels()
     lateinit var toggle:ActionBarDrawerToggle
+   lateinit var view :ImageView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+        override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_home)
-        binding_nav = NavHeaderBinding.inflate(layoutInflater)
+
+
 
         setSupportActionBar(binding.toolbar)
         toggle = ActionBarDrawerToggle(this,binding.drawerLayout,binding.toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close)
@@ -49,6 +65,12 @@ class HomeActivity : AppCompatActivity(),Frag_Profile.OnButtonClickListener  , O
 
         vm.get_profile_data()
 
+       view =  binding.navView.getHeaderView(0).findViewById<ImageView>(R.id.imageView)
+
+        vm.live_profile_img.observe(this, Observer {
+            Picasso.get().load(Uri.parse(it.toString())).placeholder(R.drawable.student).into(view)
+            Log.d("debug:","test4 observed image ${it}")
+        })
 
 
         mOrientationListener = object : OrientationEventListener(this) {
@@ -88,6 +110,28 @@ class HomeActivity : AppCompatActivity(),Frag_Profile.OnButtonClickListener  , O
             }
 
         })
+
+
+        sharedPref= this?.getPreferences(Context.MODE_PRIVATE)!!
+
+
+        var launcher = registerForActivityResult(ActivityResultContracts.GetContent()){
+
+            Picasso.get().load(Uri.parse(it.toString())).placeholder(R.drawable.student).into(view)
+            Log.d("debug:","test4 img--> ${it.toString()}")
+            val editor = sharedPref.edit()
+            editor.putString(getString(R.string.profile_image) ,it.toString())
+            editor.apply()
+
+        }
+
+        binding.navView.getHeaderView(0).setOnClickListener {
+            Log.d("debug:","test4 hreader clicked")
+            launcher.launch("image/*")
+
+        }
+
+
 
         ///////////////////////////////////////////////////code - from here//////////////////////////////////////////////////////////////////
 
@@ -197,6 +241,8 @@ class HomeActivity : AppCompatActivity(),Frag_Profile.OnButtonClickListener  , O
         }
 
     }
+
+
 
 
 }

@@ -1,6 +1,8 @@
 package com.krrishshx.worldofq.frags
 
 import android.content.Context
+import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.krrishshx.worldofq.R
 
 import com.krrishshx.worldofq.adapters.rv_subject_adapter
 import com.krrishshx.worldofq.databinding.FragmentFragProfileBinding
@@ -22,7 +26,7 @@ class Frag_Profile() : Fragment() , rv_subject_adapter.MySubjectOnItemClickListe
 
     lateinit var binding : FragmentFragProfileBinding
     private val vm : Home_vm by activityViewModels()
-
+    lateinit var   sharedPref : SharedPreferences
     private var mOnButtonClickListener: Frag_Profile.OnButtonClickListener? = null
 
     lateinit var rv_adapter :rv_subject_adapter
@@ -47,6 +51,7 @@ class Frag_Profile() : Fragment() , rv_subject_adapter.MySubjectOnItemClickListe
         binding.rvSubjects.adapter = rv_adapter
 
         Log.d("debug:","back stack entry count for fraf profile --> ${parentFragmentManager.backStackEntryCount}")
+        sharedPref= requireActivity()?.getPreferences(Context.MODE_PRIVATE)!!
 
         vm.profile_live_data.observe(requireActivity(), Observer {
             vm.get_streak_count_from_server(it.id)
@@ -55,10 +60,16 @@ class Frag_Profile() : Fragment() , rv_subject_adapter.MySubjectOnItemClickListe
             binding.profileParent.userSemNo.text = "   sem - ${it.semNo}"
 
 
+
+            vm.get_profile_img(sharedPref?.getString(getString(R.string.profile_image),"nothing").toString())
         })
+
+
 
         vm.subject_live_data.observe(requireActivity(), Observer {
             rv_adapter.setData(it)
+            binding.profileFragShimmer.visibility = View.GONE
+            binding.fragProfileParent.visibility = View.VISIBLE
         })
 
         vm.streak_live_data.observe(requireActivity(), Observer {

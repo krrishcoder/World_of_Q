@@ -1,5 +1,6 @@
 package com.krrishshx.worldofq.view_models
 
+import android.content.Context
 import android.os.CountDownTimer
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -10,6 +11,7 @@ import com.amplifyframework.core.Amplify
 import com.amplifyframework.core.model.query.Where
 import com.amplifyframework.datastore.generated.model.*
 import com.google.firebase.auth.FirebaseAuth
+import com.krrishshx.worldofq.R
 import com.krrishshx.worldofq.model.*
 import com.krrishshx.worldofq.repo.Question_repo
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,16 +26,21 @@ import kotlin.collections.ArrayList
 class Home_vm @Inject constructor(val repo:Question_repo) :ViewModel(){
 
 
-    /////////////scrlling in profile view///////////////
+    /////////////setting image///////////////
+private val mutable_img_src = MutableLiveData<String>()
+    val live_profile_img : LiveData<String> get() = mutable_img_src
 
 
+   fun get_profile_img(img:String){
+       mutable_img_src.postValue(img)
+   }
 
     ////////////////////////////////////////
 
 
 
 
-    private  var mAuth : FirebaseAuth
+     var mAuth : FirebaseAuth
     var orien_changed =0;
     var flag_finish_code =1
 

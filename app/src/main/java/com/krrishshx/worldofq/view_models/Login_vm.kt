@@ -21,9 +21,6 @@ class Login_vm @Inject constructor() : ViewModel() {
     val FLAG_LOGIN = "Login Done!!"
 
 
-    private val  counter_mutable = MutableLiveData<String>()
-    val count_live_data : LiveData<String> get() =  counter_mutable
-
     private var toast_message = MutableLiveData<String>()
     val toast_live_data :LiveData<String> get() = toast_message
 
@@ -76,24 +73,6 @@ class Login_vm @Inject constructor() : ViewModel() {
         }
             return false
     }
-
-
-
-    fun count(){
-        viewModelScope.launch {
-            for( i in 1..40){
-                delay(1000)
-                counter_mutable.postValue("number $i")
-            }
-        }
-    }
-
-
-
-
-
-
-
 
 
 }

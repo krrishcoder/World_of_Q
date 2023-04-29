@@ -1,6 +1,5 @@
 package com.krrishshx.worldofq.view_models
 
-import android.content.Context
 import android.os.CountDownTimer
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -11,19 +10,16 @@ import com.amplifyframework.core.Amplify
 import com.amplifyframework.core.model.query.Where
 import com.amplifyframework.datastore.generated.model.*
 import com.google.firebase.auth.FirebaseAuth
-import com.krrishshx.worldofq.R
 import com.krrishshx.worldofq.model.*
-import com.krrishshx.worldofq.repo.Question_repo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
-import kotlinx.coroutines.Dispatchers.IO
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
 @HiltViewModel
-class Home_vm @Inject constructor(val repo:Question_repo) :ViewModel(){
+class Home_vm @Inject constructor() :ViewModel(){
 
 
     /////////////setting image///////////////

@@ -44,10 +44,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnStart.setOnClickListener {
             vm.Login(binding.etLoginId.text.toString(),binding.etLoginPass.text.toString())
-           // binding.loginSurface.visibility = View.INVISIBLE
-           // binding.progressSurface.visibility = View.VISIBLE
             binding.lottieBulbLoading.playAnimation()
-
 
         }
 

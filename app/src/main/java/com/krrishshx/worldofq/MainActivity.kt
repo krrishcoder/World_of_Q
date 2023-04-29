@@ -21,7 +21,7 @@ import com.krrishshx.worldofq.databinding.ActivityMainBinding
 import com.krrishshx.worldofq.view_models.Main_vm
 import dagger.hilt.android.AndroidEntryPoint
 
-
+//23:08 29:04
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
@@ -133,9 +133,7 @@ binding.lottieSuccessView.visibility = View.VISIBLE
                 //store info in db
 
               var uid =  it.result.user?.uid.toString()
-
                 vm.create_user(user_name = name, roll_no = roll.toString(), sem = semester.toString(), degree = vm.arr_degree_with_id.get(vm.degree_selected), gmail_id = uid)
-
 
             } else {
                 binding.mainViewRegister.visibility = View.VISIBLE

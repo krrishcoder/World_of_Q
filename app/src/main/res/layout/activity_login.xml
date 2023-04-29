@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="#DD0C0808"
+        android:background="#635985"
         android:layout_height="match_parent"
         tools:context=".LoginActivity">
 
@@ -34,6 +34,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="204dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,10 +54,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:fontFamily="@font/fraunces_bold"
-                android:text="WORLD OF Q"
-                android:textColor="#FF5722"
-                android:textSize="26dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,13 +67,12 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/fraunces_semibold"
-                android:text="Login Page"
+                android:layout_marginStart="40dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Login"
                 android:textColor="@color/white"
                 android:textSize="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.428" />
@@ -88,6 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
+                    android:fontFamily="@font/poppins"
                     android:hint="Enter Your ID"
                     android:inputType="textEmailAddress"
                     android:letterSpacing="0.02"
@@ -118,14 +125,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
+                    android:fontFamily="@font/poppins"
                     android:hint="Password"
-                    android:letterSpacing="0.02"
                     android:inputType="textPassword"
+                    android:letterSpacing="0.02"
                     android:maxLength="15"
                     android:padding="5dp"
                     android:paddingStart="12dp"
                     android:singleLine="true"
                     android:textColor="@color/black"
+
                     android:textSize="22dp" />
 
 
@@ -137,29 +146,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                app:cardBackgroundColor="#17C11E"
+                android:layout_marginEnd="50dp"
+                app:cardBackgroundColor="#393053"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView2">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_start"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:background="#00FFFFFF"
+                    android:fontFamily="@font/poppins_medium"
+                    android:padding="8dp"
+                    android:textSize="17sp"
                     android:text="START" />
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
                 android:layout_marginTop="20dp"
-                app:cardBackgroundColor="#E91E63"
+                app:cardBackgroundColor="#393053"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/materialCardView3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView2">
 
@@ -167,7 +180,13 @@
                     android:id="@+id/btn_register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:background="#00FFFFFF"
+                    android:padding="8dp"
+                    android:textSize="17sp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="Register" />
             </com.google.android.material.card.MaterialCardView>
 

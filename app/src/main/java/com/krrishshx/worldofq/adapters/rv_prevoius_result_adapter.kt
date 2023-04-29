@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.krrishshx.worldofq.databinding.ItemInPreviousResultBinding
 import com.krrishshx.worldofq.model.my_topic_model
 
-
-class rv_prevoius_result_adapter(private  val listener :MyPreviousResultOnItemClickListener) : RecyclerView.Adapter<rv_prevoius_result_adapter.ViewHolder>() {
+const val TAG ="debug:"
+class rv_prevoius_result_adapter(private  val listener :MyPreviousResultOnItemClickListener,private val scrolling_listener : startScrollingListener) : RecyclerView.Adapter<rv_prevoius_result_adapter.ViewHolder>() {
 
         private var dataSet = emptyList<com.amplifyframework.datastore.generated.model.Result>()
        private var data_topics = emptyList<my_topic_model>()
@@ -43,21 +43,24 @@ class rv_prevoius_result_adapter(private  val listener :MyPreviousResultOnItemCl
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-            holder.binding.tvScore.text = "${dataSet.get(position).attendedQuestion }/${dataSet.get(position).totalMarks } "
-            holder.binding.tvAttemptNo.text = dataSet.get(position).attemptNo.toString()
-            val str = dataSet.get(position).createdAt.toDate().toString()
+            holder.binding.tvScore.text = "${dataSet?.get(position)?.attendedQuestion }/${dataSet.get(position)?.totalMarks } "
+            holder.binding.tvAttemptNo.text = dataSet?.get(position)?.attemptNo?.toString()
+            val str = dataSet?.get(position)?.createdAt?.toDate()?.toString()
 
-            val newStr = str.substring(0, str.length - 14)
+            val newStr = str?.substring(0, str.length - 14)
             holder.binding.tvDate.text = newStr
 
+if(position >=4){
+    scrolling_listener.onstartScrolling(position)
+    Log.d(TAG,"test3  --> position more than 4 binded position --> ${position}")
+}
 
-
-            val curr_topic_id =dataSet.get(position).resultTopicId
+            val curr_topic_id =dataSet?.get(position)?.resultTopicId
 
             for(i in 0 ..(data_topics_id.size-1)){
 
                 if(curr_topic_id == data_topics_id[i]){
-                     holder.binding.resultTopic.text  = data_topics[i].topic_name
+                     holder.binding.resultTopic.text  = data_topics[i]?.topic_name
                      break
                 }
             }
@@ -75,7 +78,7 @@ class rv_prevoius_result_adapter(private  val listener :MyPreviousResultOnItemCl
 
 
             for(i in 0..(topic_arr.size-1)){
-                data_topics_id.add(topic_arr[i].id)
+                topic_arr[i]?.id?.let { data_topics_id.add(it) }
             }
 
             diffResults.dispatchUpdatesTo(this)
@@ -86,6 +89,10 @@ class rv_prevoius_result_adapter(private  val listener :MyPreviousResultOnItemCl
         interface MyPreviousResultOnItemClickListener {
             fun onResultItemClick(position: Int, v: View?)
         }
+
+    interface startScrollingListener{
+        fun onstartScrolling(position: Int)
+    }
 
 
 

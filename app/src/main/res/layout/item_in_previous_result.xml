@@ -18,17 +18,18 @@
             android:paddingStart="17dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#2196F3"
+            android:background="#443C68"
             android:padding="10dp">
 
             <TextView
                 android:id="@+id/result_topic"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="E-R Diagram"
-                android:textColor="@color/black"
-                android:textSize="22sp"
+                android:text="E-R Diagram hvjg jhvj hj yf hy yjh j"
+                android:textColor="@color/result_data"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -39,8 +40,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Score -"
-                android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textColor="@color/result_data"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/result_topic"
                 app:layout_constraintTop_toBottomOf="@+id/result_topic" />
 
@@ -51,8 +52,8 @@
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="11/12"
-                android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textColor="@color/result_data"
+                android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@+id/textView19"
                 app:layout_constraintTop_toTopOf="@+id/textView19" />
 
@@ -62,8 +63,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Attempt no. "
-                android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textColor="@color/result_data"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/textView19"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -74,8 +75,8 @@
                 android:layout_marginStart="15dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text=" 1"
-                android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textColor="@color/result_data"
+                android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@+id/textView20"
                 app:layout_constraintTop_toTopOf="@+id/textView20" />
 
@@ -87,8 +88,8 @@
                 android:fontFamily="@font/poppins_medium"
                 android:rotation="0"
                 android:text="11/04/23"
-                android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textColor="@color/result_data"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView20"
                 app:layout_constraintTop_toBottomOf="@+id/tv_attempt_no" />

@@ -29,7 +29,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class Frag_starterForQ : Fragment() ,rv_test_topics_list.MytestTopicsOnItemClickListener , rv_prevoius_result_adapter.MyPreviousResultOnItemClickListener{
+class Frag_starterForQ : Fragment() ,rv_test_topics_list.MytestTopicsOnItemClickListener , rv_prevoius_result_adapter.MyPreviousResultOnItemClickListener , rv_prevoius_result_adapter.startScrollingListener{
 
     lateinit var binding : FragmentFragStarterForQBinding
     lateinit var rv_adapter_topics_list : rv_test_topics_list
@@ -63,7 +63,7 @@ class Frag_starterForQ : Fragment() ,rv_test_topics_list.MytestTopicsOnItemClick
         myDialog = Dialog(requireActivity())
 
         rv_adapter_topics_list = rv_test_topics_list(this)
-        rv_adapter_previous_result = rv_prevoius_result_adapter(this)
+        rv_adapter_previous_result = rv_prevoius_result_adapter(this,this)
 
         binding.rvTestListForASubject.layoutManager = LinearLayoutManager(requireActivity(),LinearLayoutManager.VERTICAL,false)
         binding.rvPreviousResult.layoutManager = LinearLayoutManager(requireActivity(),LinearLayoutManager.VERTICAL,false)
@@ -72,12 +72,12 @@ class Frag_starterForQ : Fragment() ,rv_test_topics_list.MytestTopicsOnItemClick
         binding.rvTestListForASubject.adapter = rv_adapter_topics_list
         binding.rvPreviousResult.adapter = rv_adapter_previous_result
 
+        binding.rvPreviousResult.isNestedScrollingEnabled = false
 
         Log.d("debug:","back stack entry count of frag starter --> ${parentFragmentManager.backStackEntryCount}")
 
 
         dialogBinding.btnStart.setOnClickListener {
-
             //its start the test causing problem that at 2nd time in test it does not start the test rather finishes it
             //acts as that i have clicked back button from frag question window
 
@@ -98,7 +98,7 @@ class Frag_starterForQ : Fragment() ,rv_test_topics_list.MytestTopicsOnItemClick
         vm.topic_live_data.observe(requireActivity(), Observer {
 
             binding.cardOne.tvSubjectHeading.text = vm.subject_chosen
-            binding.cardOne.tvTotalTest.text = it.size?.toString()
+            binding.cardOne.tvTotalTest.text = "${it.size?.toString()}"
             rv_adapter_topics_list.setData(it)
 
 
@@ -108,6 +108,21 @@ class Frag_starterForQ : Fragment() ,rv_test_topics_list.MytestTopicsOnItemClick
         vm.live_count_test_completed_for_a_topic.observe(requireActivity(), Observer {
             binding.cardOne.tvTestCompletedForATopic.text = "$it"
         })
+
+        binding.root.isNestedScrollingEnabled = false
+
+        binding.root.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+
+            Log.d("debug:", "test3 $scrollY")
+            if(vm.previous_result?.size!! >=3){
+                binding.root.isNestedScrollingEnabled = true
+
+            }
+
+            binding.rvPreviousResult.isNestedScrollingEnabled = scrollY >= 1540
+
+        }
+
 
 
 
@@ -143,6 +158,10 @@ class Frag_starterForQ : Fragment() ,rv_test_topics_list.MytestTopicsOnItemClick
 
     internal interface OnButtonStartTestClickListener {
         fun onTestStartClicked(topic:String)
+    }
+
+    override fun onstartScrolling(position: Int) {
+
     }
 
 

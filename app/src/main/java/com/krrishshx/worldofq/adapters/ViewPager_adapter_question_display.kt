@@ -13,8 +13,9 @@ import com.krrishshx.worldofq.model.my_question_model
 class ViewPager_adapter_question_display(private  val listener_option_selected :option_selected_listener ,private val plistener_test_finish :test_finish_listener,private  val next_previous_listener:mNext_previous_listener) : RecyclerView.Adapter<ViewPager_adapter_question_display.ViewPagerViewHolder>() {
 
         private var dataSet = emptyList<my_question_model>()
+        lateinit var dataSelected :ArrayList<Int>
 
-        inner class ViewPagerViewHolder(val binding: ItemInViewpagerQuestionsBinding ) :
+    inner class ViewPagerViewHolder(val binding: ItemInViewpagerQuestionsBinding ) :
             RecyclerView.ViewHolder(binding.root), View.OnClickListener {
             init {
                 binding.root.setOnClickListener(this)
@@ -43,21 +44,23 @@ class ViewPager_adapter_question_display(private  val listener_option_selected :
 
         holder.binding.tvQuestionNoVp.text = "Q.${position+1} "
         holder.binding.tvQuestionDes.text = dataSet.get(position).question_des
-
         holder.binding.cbOne.text = dataSet.get(position).opt1
-        holder.binding.cbTwo.text =dataSet.get(position).opt2
-        holder.binding.cbThree.text=dataSet.get(position).opt3
-        holder.binding.cbFour.text=dataSet.get(position).opt4
+        holder.binding.cbTwo.text = dataSet.get(position).opt2
+        holder.binding.cbThree.text= dataSet.get(position).opt3
+        holder.binding.cbFour.text= dataSet.get(position).opt4
 
         if(position == (dataSet.size-1)){
             holder.binding.btnNextVp.setCardBackgroundColor(Color.MAGENTA)
             holder.binding.tvNext.text = "Submit"
+        }else{
+            holder.binding.btnNextVp.setCardBackgroundColor(Color.GREEN)
+            holder.binding.tvNext.text = "Next"
         }
 
 
         holder.binding.btnNextVp.setOnClickListener {
             if(position ==(dataSet.size-1)){
-              //  plistener_test_finish.on_test_finish(position)
+                plistener_test_finish.on_test_finish(position)
             }else{
                 next_previous_listener.on_next_previous_clicked(1)
             }
@@ -71,12 +74,34 @@ class ViewPager_adapter_question_display(private  val listener_option_selected :
 
 
 
+if(dataSelected[position]>=0){
+    when(dataSelected[position]){
+        0 ->{
+             holder.binding.cbOne.isChecked = true
+        }
+        1 ->{
+            holder.binding.cbTwo.isChecked = true
+        }
+        2 ->{
+            holder.binding.cbThree.isChecked = true
+       }3 ->{
+            holder.binding.cbFour.isChecked = true
+       }
+        else ->{
 
-        holder.binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
+        }
+    }
+}else{
+    holder.binding.cbOne.isChecked =  false
+    holder.binding.cbTwo.isChecked = false
+    holder.binding.cbThree.isChecked = false
+    holder.binding.cbFour.isChecked = false
+
+}
 
 
-
-var sel =0
+       holder.binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
+          var sel =0
             when(checkedId){
                 holder.binding.cbOne.id ->{
                    sel=0
@@ -93,9 +118,10 @@ var sel =0
                 else ->{
 
                 }
-
             }
-            Log.d("debug:","selected option was $sel")
+
+           dataSelected[position] =sel
+           Log.d("debug:","selected option was $sel")
             listener_option_selected.option_selected(position,sel)
 
         }
@@ -125,6 +151,11 @@ var sel =0
             val diffResults = DiffUtil.calculateDiff(diffUtil)
 
             dataSet = new_list
+            dataSelected = ArrayList<Int>()
+
+            for(i in 0..(new_list.size-1)){
+                dataSelected.add(-1)
+            }
 
             diffResults.dispatchUpdatesTo(this)
         }

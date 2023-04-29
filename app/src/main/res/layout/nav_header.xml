@@ -3,15 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#E91E63"
+    android:background="@color/drawer_color"
     android:padding="16dp"
-    android:layout_height="176dp">
+    android:layout_height="250dp">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:src="@drawable/ic_launcher_foreground"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="40dp"
+        android:paddingTop="20dp"
+        android:src="@drawable/student"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,18 +22,21 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="10dp"
         android:text="World OF Q"
+        android:fontFamily="@font/poppins_semibold"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
+        android:id="@+id/header_in_nav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="kk612470@gmail.com"
+        android:layout_marginTop="6dp"
+        android:text="Admin - kk612470@gmail.com"
+        android:fontFamily="@font/poppins_semibold"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />

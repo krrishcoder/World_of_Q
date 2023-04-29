@@ -22,7 +22,7 @@
             android:padding="13dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#BF5BD90E">
+            android:background="#393053">
 
 
             <TextView
@@ -32,7 +32,8 @@
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Database Management"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
+                android:textAllCaps="true"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -43,9 +44,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Test Completed - "
-                android:textColor="@color/white"
-                android:textSize="20sp"
+                android:text="Test Completed🥳 - "
+                android:textColor="@color/subject_contains"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/tv_subject_heading"
                 app:layout_constraintTop_toBottomOf="@+id/tv_subject_heading" />
 
@@ -55,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:text="7"
-                android:textColor="@color/white"
+                android:textColor="@color/subject_contains"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_num"
                 app:layout_constraintStart_toEndOf="@+id/tv_num"
@@ -67,8 +68,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Total Test - "
-                android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textColor="@color/subject_contains"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/tv_num"
                 app:layout_constraintTop_toBottomOf="@+id/tv_num" />
 
@@ -78,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:text="12"
-                android:textColor="@color/white"
+                android:textColor="@color/subject_contains"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView14"
                 app:layout_constraintStart_toEndOf="@+id/textView14"
@@ -90,8 +91,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:text="The purpose of our lives is to be happy"
-                android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textColor="@color/subject_contains"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView14"
                 app:layout_constraintTop_toBottomOf="@+id/textView14" />

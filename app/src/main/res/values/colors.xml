@@ -7,4 +7,26 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="profile_heading_color">#DFFFFFFF</color>
+    <color name="profile_data_color">#A4FFFFFF</color>
+    <color name="subject_heading">#E6FFFFFF</color>
+
+    <color name="subject_contains">#C1FFFFFF</color>
+    <color name="drawer_color">#393053</color>
+    <color name="drawer_bottom">#FFFFFF</color>
+
+    <color name="topic_heading_color">#FFFFFFFF</color>
+    <color name="topic_data">#FFFFFFFF</color>
+
+   <color name="result_head">#000000</color>
+    <color name="result_data">#B9FFFFFF</color>
+
+    <color name="min_timer">#000000</color>
+    <color name="sec_timer">#000000</color>
+
+    <color name="option">#B9FFFFFF</color>
+    <color name="question">#18122B</color>
+
 </resources>

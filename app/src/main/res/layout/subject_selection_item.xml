@@ -12,16 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="20dp"
-        app:cardElevation="4dp"
+        app:cardElevation="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="#BF5BD90E"
+            android:background="#443C68"
             android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -33,34 +32,22 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Database managementhgj"
-                android:textColor="@color/black"
-                android:textSize="28sp"
+                android:text="Subject Name"
+                android:textColor="@color/subject_heading"
+                android:textSize="21sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/test_given"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="52dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="2/7"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/subject_name" />
 
             <com.google.android.material.card.MaterialCardView
 
                 android:id="@+id/give_test_btn"
-                app:cardElevation="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                app:cardCornerRadius="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="#393053"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/subject_name">
@@ -72,9 +59,9 @@
                     android:fontFamily="@font/poppins_medium"
                     android:paddingStart="13dp"
                     android:paddingEnd="13dp"
-                    android:textColor="#38AF2F"
+                    android:textColor="#D328B61D"
                     android:text="Give Test"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     />
 
             </com.google.android.material.card.MaterialCardView>

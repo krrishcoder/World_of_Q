@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#03A9F4"
+    android:background="#635985"
     tools:context=".frags.Frag_question_display">
 
 
@@ -17,7 +17,7 @@
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/poppins_medium"
         android:text="30"
-        android:textColor="@color/black"
+        android:textColor="@color/min_timer"
         app:layout_constraintBottom_toTopOf="@+id/viewpager_question_display"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:layout_marginTop="2dp"
-        android:textColor="@color/black"
+        android:textColor="@color/min_timer"
         android:fontFamily="@font/poppins_medium"
         android:text="m : "
         android:textSize="10sp"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_medium"
         android:text="00"
-        android:textColor="@color/black"
+        android:textColor="@color/sec_timer"
         app:layout_constraintBottom_toBottomOf="@+id/tv_minute_left"
         app:layout_constraintStart_toEndOf="@+id/textView21"
         app:layout_constraintTop_toTopOf="@+id/tv_minute_left" />
@@ -55,7 +55,7 @@
         android:fontFamily="@font/poppins_medium"
         android:text="s"
         android:textSize="10sp"
-        android:textColor="@color/black"
+        android:textColor="@color/sec_timer"
         app:layout_constraintBottom_toBottomOf="@+id/textView21"
         app:layout_constraintStart_toEndOf="@+id/tv_seconds_left"
         app:layout_constraintTop_toTopOf="@+id/textView21" />

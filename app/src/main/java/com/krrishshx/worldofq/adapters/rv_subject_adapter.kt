@@ -33,7 +33,7 @@ class rv_subject_adapter(private  val listener : MySubjectOnItemClickListener) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.subjectName.text = dataSet.get(position).sname
-        holder.binding.testGiven.text = "wait"
+        //holder.binding.testGiven.text = "wait"
     }
 
 

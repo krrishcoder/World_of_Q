@@ -24,6 +24,15 @@ import kotlin.collections.ArrayList
 class Home_vm @Inject constructor(val repo:Question_repo) :ViewModel(){
 
 
+    /////////////scrlling in profile view///////////////
+
+
+
+    ////////////////////////////////////////
+
+
+
+
     private  var mAuth : FirebaseAuth
     var orien_changed =0;
     var flag_finish_code =1
@@ -35,15 +44,23 @@ class Home_vm @Inject constructor(val repo:Question_repo) :ViewModel(){
     lateinit var arr_user_response : ArrayList<Int>
     lateinit var answers_arr : ArrayList<Int>
 
-    fun calculate_of_marks():Int{
+    fun calculate_of_marks():Int{                      //problem with test3 LOG
         var total_mark =0
+        Log.d("debug:"," test3  question size is -- > ${question_arr.size}")
+
         for(i in 0..(question_arr.size-1)){
             //if user has not responded than arr_user_resposne will give -1
             //if he has responded than match answer to responded
-            if(arr_user_response[i] >=0 && answers_arr[i]==arr_user_response[i]){
-                total_mark++
+            try {
+                if (arr_user_response[i] >= 0 && answers_arr[i] == arr_user_response[i]) {
+                    total_mark++
+                }
+            }catch (e:Exception){
+                Log.e("debug:","problem in calculation of marks")
             }
         }
+        Log.d("debug:"," test3  answers responded    -- > ${arr_user_response.toString()}  score --> ${total_mark}")
+
         return total_mark
     }
 
@@ -327,20 +344,18 @@ class Home_vm @Inject constructor(val repo:Question_repo) :ViewModel(){
     var curr_topic_id =""
 
     fun get_questions(topic_pos:Int) {
-     //   Log.d("debug:","called get question po = ${topic_pos}")
         current_topic_num = topic_pos
         curr_topic_id = topic_arr[topic_pos].id
 
         viewModelScope.launch {
             Amplify.DataStore.query(
                 Question::class.java,
-                Where.matches(Question.QUESTION_TOPIC_ID.eq(topic_arr.get(topic_pos).id)).sorted(Question.ID.ascending()),
+                Where.matches(Question.QUESTION_TOPIC_ID.eq(topic_arr.get(topic_pos).id)).sorted(Question.QNUM.ascending()),
                 {
                 questionitems ->
                     question_arr = ArrayList()
                     while(questionitems.hasNext()){
                         val item = questionitems.next()
-                      //  Log.d("debug:","question -- > ${item.qDes}")
                         question_arr.add(my_question_model(item.id,item.qDes,item.option1,item.option2,item.option3,item.option4))
                     }
                     get_all_answer_of_topic(topic_pos)
@@ -368,8 +383,8 @@ class Home_vm @Inject constructor(val repo:Question_repo) :ViewModel(){
                     while (answer_itr.hasNext()) {
                         val item = answer_itr.next()
                        answers_arr.addAll(item.answerList)
-                     //   Log.d("debug:","after adding answers ${answers_arr.toString()}")
-                    }
+                      }
+                    Log.d("debug:","test3 --> all the answers i got from server is --> ${answers_arr.toString()}")
                 },
                 {
                     Log.e("debug:", "no network")
@@ -429,6 +444,8 @@ class Home_vm @Inject constructor(val repo:Question_repo) :ViewModel(){
         }
 
     }
+
+
 
     fun stop_timer(){
         my_timer.onFinish()

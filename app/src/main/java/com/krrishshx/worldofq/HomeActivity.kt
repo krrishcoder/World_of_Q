@@ -1,8 +1,10 @@
 package com.krrishshx.worldofq
 
+import android.content.ActivityNotFoundException
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.res.Configuration
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -16,6 +18,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener
 import com.krrishshx.worldofq.databinding.ActivityHomeBinding
+import com.krrishshx.worldofq.databinding.NavHeaderBinding
 import com.krrishshx.worldofq.frags.Frag_Profile
 import com.krrishshx.worldofq.frags.Frag_question_display
 import com.krrishshx.worldofq.frags.Frag_starterForQ
@@ -27,6 +30,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeActivity : AppCompatActivity(),Frag_Profile.OnButtonClickListener  , OnNavigationItemSelectedListener , Frag_starterForQ.OnButtonStartTestClickListener{
 
     lateinit var binding:ActivityHomeBinding
+    lateinit var binding_nav : NavHeaderBinding
     lateinit var   mOrientationListener : OrientationEventListener
     var flag_orien_changed =0
     private val vm:Home_vm by viewModels()
@@ -35,7 +39,7 @@ class HomeActivity : AppCompatActivity(),Frag_Profile.OnButtonClickListener  , O
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_home)
-
+        binding_nav = NavHeaderBinding.inflate(layoutInflater)
 
         setSupportActionBar(binding.toolbar)
         toggle = ActionBarDrawerToggle(this,binding.drawerLayout,binding.toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close)
@@ -44,6 +48,7 @@ class HomeActivity : AppCompatActivity(),Frag_Profile.OnButtonClickListener  , O
         binding.navView.setNavigationItemSelectedListener(this)
 
         vm.get_profile_data()
+
 
 
         mOrientationListener = object : OrientationEventListener(this) {
@@ -96,6 +101,14 @@ class HomeActivity : AppCompatActivity(),Frag_Profile.OnButtonClickListener  , O
             }
         }
 
+        vm.flag_live_to_finish_test.observe(this, Observer {
+
+            if (it >= vm.flag_finish_code) {
+                supportFragmentManager.popBackStack()
+            }
+
+        })
+
 
 
 
@@ -138,8 +151,7 @@ class HomeActivity : AppCompatActivity(),Frag_Profile.OnButtonClickListener  , O
                  .setMessage("Are you sure you want to finish the test here?")
                  .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, which ->
                      vm.stop_timer()
-
-                     supportFragmentManager.popBackStack()
+                   //  supportFragmentManager.popBackStack()
                      Toast.makeText(this, "Test Submitted Automatically", Toast.LENGTH_SHORT).show()
                  })
                  .setNegativeButton("No", null)

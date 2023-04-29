@@ -32,6 +32,7 @@ public final class Question implements Model {
   public static final QueryField OPTION2 = field("Question", "option2");
   public static final QueryField OPTION3 = field("Question", "option3");
   public static final QueryField OPTION4 = field("Question", "option4");
+  public static final QueryField QNUM = field("Question", "qnum");
   public static final QueryField QUESTION_TOPIC_ID = field("Question", "questionTopicId");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String q_des;
@@ -40,6 +41,7 @@ public final class Question implements Model {
   private final @ModelField(targetType="String") String option2;
   private final @ModelField(targetType="String") String option3;
   private final @ModelField(targetType="String") String option4;
+  private final @ModelField(targetType="Int") Integer qnum;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   private final @ModelField(targetType="ID") String questionTopicId;
@@ -75,6 +77,10 @@ public final class Question implements Model {
       return option4;
   }
   
+  public Integer getQnum() {
+      return qnum;
+  }
+  
   public Temporal.DateTime getCreatedAt() {
       return createdAt;
   }
@@ -87,13 +93,14 @@ public final class Question implements Model {
       return questionTopicId;
   }
   
-  private Question(String id, String q_des, String option1, String option2, String option3, String option4, String questionTopicId) {
+  private Question(String id, String q_des, String option1, String option2, String option3, String option4, Integer qnum, String questionTopicId) {
     this.id = id;
     this.q_des = q_des;
     this.option1 = option1;
     this.option2 = option2;
     this.option3 = option3;
     this.option4 = option4;
+    this.qnum = qnum;
     this.questionTopicId = questionTopicId;
   }
   
@@ -111,6 +118,7 @@ public final class Question implements Model {
               ObjectsCompat.equals(getOption2(), question.getOption2()) &&
               ObjectsCompat.equals(getOption3(), question.getOption3()) &&
               ObjectsCompat.equals(getOption4(), question.getOption4()) &&
+              ObjectsCompat.equals(getQnum(), question.getQnum()) &&
               ObjectsCompat.equals(getCreatedAt(), question.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), question.getUpdatedAt()) &&
               ObjectsCompat.equals(getQuestionTopicId(), question.getQuestionTopicId());
@@ -126,6 +134,7 @@ public final class Question implements Model {
       .append(getOption2())
       .append(getOption3())
       .append(getOption4())
+      .append(getQnum())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .append(getQuestionTopicId())
@@ -143,6 +152,7 @@ public final class Question implements Model {
       .append("option2=" + String.valueOf(getOption2()) + ", ")
       .append("option3=" + String.valueOf(getOption3()) + ", ")
       .append("option4=" + String.valueOf(getOption4()) + ", ")
+      .append("qnum=" + String.valueOf(getQnum()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()) + ", ")
       .append("questionTopicId=" + String.valueOf(getQuestionTopicId()))
@@ -170,6 +180,7 @@ public final class Question implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
@@ -181,6 +192,7 @@ public final class Question implements Model {
       option2,
       option3,
       option4,
+      qnum,
       questionTopicId);
   }
   public interface QDesStep {
@@ -195,6 +207,7 @@ public final class Question implements Model {
     BuildStep option2(String option2);
     BuildStep option3(String option3);
     BuildStep option4(String option4);
+    BuildStep qnum(Integer qnum);
     BuildStep questionTopicId(String questionTopicId);
   }
   
@@ -206,6 +219,7 @@ public final class Question implements Model {
     private String option2;
     private String option3;
     private String option4;
+    private Integer qnum;
     private String questionTopicId;
     @Override
      public Question build() {
@@ -218,6 +232,7 @@ public final class Question implements Model {
           option2,
           option3,
           option4,
+          qnum,
           questionTopicId);
     }
     
@@ -253,6 +268,12 @@ public final class Question implements Model {
     }
     
     @Override
+     public BuildStep qnum(Integer qnum) {
+        this.qnum = qnum;
+        return this;
+    }
+    
+    @Override
      public BuildStep questionTopicId(String questionTopicId) {
         this.questionTopicId = questionTopicId;
         return this;
@@ -270,13 +291,14 @@ public final class Question implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String qDes, String option1, String option2, String option3, String option4, String questionTopicId) {
+    private CopyOfBuilder(String id, String qDes, String option1, String option2, String option3, String option4, Integer qnum, String questionTopicId) {
       super.id(id);
       super.qDes(qDes)
         .option1(option1)
         .option2(option2)
         .option3(option3)
         .option4(option4)
+        .qnum(qnum)
         .questionTopicId(questionTopicId);
     }
     
@@ -303,6 +325,11 @@ public final class Question implements Model {
     @Override
      public CopyOfBuilder option4(String option4) {
       return (CopyOfBuilder) super.option4(option4);
+    }
+    
+    @Override
+     public CopyOfBuilder qnum(Integer qnum) {
+      return (CopyOfBuilder) super.qnum(qnum);
     }
     
     @Override

@@ -17,47 +17,49 @@
 
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/cb_one"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:textSize="19sp"
             android:fontFamily="@font/poppins_medium"
             android:text="this is a option  which tells pir r square testtest t fdeb"
-            android:textColor="@color/black" />
+            android:textColor="@color/option" />
 
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/cb_two"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="this is third box "
+            android:textSize="19sp"
+            android:textColor="@color/option"
             app:layout_constraintStart_toStartOf="@+id/cb_two"
             app:layout_constraintTop_toBottomOf="@+id/cb_two" />
 
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/cb_three"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
+            android:textSize="19sp"
             android:text="i am four ,,how aws your day ? "
+            android:textColor="@color/option"
             app:layout_constraintStart_toStartOf="@+id/cb_three"
             app:layout_constraintTop_toBottomOf="@+id/cb_three" />
 
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/cb_four"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="this is check box 3"
+            android:textColor="@color/option"
+            android:textSize="19sp"
             app:layout_constraintStart_toStartOf="@+id/cb_one"
             app:layout_constraintTop_toBottomOf="@+id/cb_one" />
 
 
     </RadioGroup>
-
-
-
-
-
 
 
     <TextView
@@ -66,8 +68,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_medium"
         android:text="Q.12 "
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_question_des"
+        android:textColor="@color/question"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_question_des" />
 
@@ -75,12 +77,12 @@
         android:id="@+id/tv_question_des"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/poppins_semibold"
         android:paddingStart="5dp"
         android:paddingEnd="10dp"
         android:text="What is Area of Circle ? a b d sf  vv fvfvf v vdgb xsffvfb ddvvfvff"
-        android:textColor="@color/black"
+        android:textColor="@color/question"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_question_no_vp"
         app:layout_constraintTop_toTopOf="parent" />
@@ -111,7 +113,7 @@
             android:padding="4dp"
             android:paddingStart="14dp"
             android:paddingEnd="14dp"
-            android:text="Prevoius"
+            android:text="Previous"
             android:textColor="@color/white" />
 
     </com.google.android.material.card.MaterialCardView>
@@ -144,7 +146,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_thin"
+        android:fontFamily="@font/poppins_medium"
         android:padding="10dp"
         android:text="!! Instructions . here if you check a answer in Do Next than your answer will be automatically submitted . and if you don't check any answer but do next than
  it will be ticked as un at Un attempted "

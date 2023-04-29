@@ -8,7 +8,7 @@
     <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#D3120C0C"
+        android:background="#635985"
         android:id="@+id/drawer_layout"
         android:fitsSystemWindows="true"
         tools:context=".HomeActivity">
@@ -22,13 +22,17 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/black"
+                android:background="@android:color/transparent"
                 android:elevation="4dp"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:subtitleTextAppearance="@style/CustomToolbarStyle"
+                app:titleTextAppearance="@style/CustomToolbarStyle"
+                app:titleTextColor="@color/white"
+                />
 
             <FrameLayout
                 android:id="@+id/frame_layout"
@@ -47,6 +51,7 @@
             app:menu="@menu/drawer_menu"
             app:headerLayout="@layout/nav_header"
             android:id="@+id/nav_view"
+            android:background="@color/drawer_bottom"
             android:layout_gravity="start"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"/>

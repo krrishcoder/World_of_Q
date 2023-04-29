@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="#9FFF9800"
+            android:background="#393053"
             android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -26,8 +26,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:text="1. "
-                android:textColor="@color/black"
-                android:textSize="26sp"
+                android:textColor="@color/topic_heading_color"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,9 +36,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="E-R Diagram "
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                android:paddingEnd="10dp"
+                android:text="Topic name "
+                android:textColor="@color/topic_heading_color"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_question_no"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -74,7 +75,7 @@
                 android:layout_marginEnd="30dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="30 min"
-                android:textColor="@color/black"
+                android:textColor="@color/topic_data"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_topic_name" />

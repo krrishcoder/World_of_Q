@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#635985"
     android:overScrollMode="ifContentScrolls"
     tools:context=".frags.Frag_Profile">
 
@@ -28,7 +28,7 @@
         android:layout_marginStart="15dp"
         android:fontFamily="@font/poppins_medium"
         android:text="Select a Subject"
-        android:textColor="#AE000000"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_parent" />

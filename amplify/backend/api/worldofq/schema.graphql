@@ -30,6 +30,7 @@ type Question @model @auth(rules: [{allow: public}]) {
   option2: String
   option3: String
   option4: String
+  qnum: Int
 }
 
 type Topic @model @auth(rules: [{allow: public}]) {

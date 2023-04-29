@@ -1,12 +1,14 @@
 package com.krrishshx.worldofq.frags
 
 import android.app.Activity
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -17,8 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class Frag_question_display : Fragment() , ViewPager_adapter_question_display.option_selected_listener,
-    ViewPager_adapter_question_display.test_finish_listener, ViewPager_adapter_question_display.mNext_previous_listener
+class Frag_question_display : Fragment() , ViewPager_adapter_question_display.option_selected_listener,ViewPager_adapter_question_display.test_finish_listener ,
+    ViewPager_adapter_question_display.mNext_previous_listener
 
 {
 
@@ -64,14 +66,18 @@ class Frag_question_display : Fragment() , ViewPager_adapter_question_display.op
 
             vm.flag_live_to_finish_test.observe(requireActivity(), Observer {
 
+                //don't do here anything bcoz 2nd time you give the test it will automatically
+                //observe the same data and you will be annoyed!!!
+
+
+                //this is complete background service so don't use activity or any context here warning!!
                 if (it >= vm.flag_finish_code) {
                     vm.flag_finish_code += 1
-
                     vm.create_result(vm.subject_chosen,vm.current_user_id_amplify,vm.value_of_timer_when_ended)
                      vm.update_streak_count()
-
                     Log.d("Debug:", "pops a fragment -- > when test called finish  in Fragment ")
                     //1st exit point
+
                 }
 
             })
@@ -83,28 +89,10 @@ class Frag_question_display : Fragment() , ViewPager_adapter_question_display.op
     }
 
     override fun option_selected(question_number: Int, option_selected: Int) {
-        //Log.d("debug:","question no. --> $question_number option selected--> $option_selected   size of answer --> ${vm.arr_user_response.size}")
         vm.arr_user_response.set(question_number,option_selected)
-    //   Log.d("debug:"," see the response array -> ${vm.arr_user_response.toString()}")
+
     }
 
-
-    override fun on_test_finish(position: Int) {
-
-//        AlertDialog.Builder(requireContext())
-//            .setTitle("Confirm Exit Test")
-//            .setMessage("Are you sure you want to finish the test here?")
-//            .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, which ->
-//                Toast.makeText(requireContext(),"Test Submitted",Toast.LENGTH_SHORT).show()
-//
-//                vm.stop_timer()
-//
-//                requireActivity().supportFragmentManager.popBackStack()
-//
-//            })
-//            .setNegativeButton("No", null)
-//            .show()
-    }
 
     override fun on_next_previous_clicked(flag: Int) {
         if(flag==1){
@@ -116,6 +104,22 @@ class Frag_question_display : Fragment() , ViewPager_adapter_question_display.op
         }
 
     }
+
+    override fun on_test_finish(position: Int) {
+       //handle here sent it back
+
+        AlertDialog.Builder(requireActivity())
+            .setTitle("Confirm Exit Test")
+            .setMessage("Are you sure you want to finish the test here?")
+            .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, which ->
+                Toast.makeText(requireContext(),"Test Submitted",Toast.LENGTH_SHORT).show()
+                vm.stop_timer()
+            })
+            .setNegativeButton("No", null)
+            .show()
+    }
+
+
 
 
 }
